@@ -77,7 +77,6 @@ class RandomShapeFiller extends React.Component {
 
         return (
             <div className="centered">
-                <p>{this.state.shapes.length}</p>
                 <Stage width={CANVAS_SIZE} height={CANVAS_SIZE} onClick={this.handleClick}>
                     <Layer>
                         <Rect x={0} y={0} width={CANVAS_SIZE} height={CANVAS_SIZE} stroke={"black"}/>
