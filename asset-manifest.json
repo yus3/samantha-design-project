@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/samantha-design-project/static/css/main.aa0c08a5.chunk.css",
-    "main.js": "/samantha-design-project/static/js/main.f224490f.chunk.js",
-    "main.js.map": "/samantha-design-project/static/js/main.f224490f.chunk.js.map",
+    "main.js": "/samantha-design-project/static/js/main.6acc80bb.chunk.js",
+    "main.js.map": "/samantha-design-project/static/js/main.6acc80bb.chunk.js.map",
     "runtime-main.js": "/samantha-design-project/static/js/runtime-main.ebe9e9fb.js",
     "runtime-main.js.map": "/samantha-design-project/static/js/runtime-main.ebe9e9fb.js.map",
-    "static/js/2.4d3ca9c9.chunk.js": "/samantha-design-project/static/js/2.4d3ca9c9.chunk.js",
-    "static/js/2.4d3ca9c9.chunk.js.map": "/samantha-design-project/static/js/2.4d3ca9c9.chunk.js.map",
+    "static/js/2.8d96f0e1.chunk.js": "/samantha-design-project/static/js/2.8d96f0e1.chunk.js",
+    "static/js/2.8d96f0e1.chunk.js.map": "/samantha-design-project/static/js/2.8d96f0e1.chunk.js.map",
     "index.html": "/samantha-design-project/index.html",
-    "precache-manifest.51968bab1baba7df5175fe8ffd544b52.js": "/samantha-design-project/precache-manifest.51968bab1baba7df5175fe8ffd544b52.js",
+    "precache-manifest.84a9a9996c5f6bb37d1700ad6d145222.js": "/samantha-design-project/precache-manifest.84a9a9996c5f6bb37d1700ad6d145222.js",
     "service-worker.js": "/samantha-design-project/service-worker.js",
     "static/css/main.aa0c08a5.chunk.css.map": "/samantha-design-project/static/css/main.aa0c08a5.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.ebe9e9fb.js",
-    "static/js/2.4d3ca9c9.chunk.js",
+    "static/js/2.8d96f0e1.chunk.js",
     "static/css/main.aa0c08a5.chunk.css",
-    "static/js/main.f224490f.chunk.js"
+    "static/js/main.6acc80bb.chunk.js"
   ]
 }

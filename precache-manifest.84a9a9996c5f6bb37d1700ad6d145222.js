@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "689bdc428ddd84b1baeb5c401c69b8b0",
+    "revision": "c00f3e7925d90bc0bb3577b62288e5aa",
     "url": "/samantha-design-project/index.html"
   },
   {
-    "revision": "b6624a5be782d09b18fc",
+    "revision": "a21e18fd1a4745892f7f",
     "url": "/samantha-design-project/static/css/main.aa0c08a5.chunk.css"
   },
   {
-    "revision": "a94b37dedae0700d773f",
-    "url": "/samantha-design-project/static/js/2.4d3ca9c9.chunk.js"
+    "revision": "def4642c461dc525c71b",
+    "url": "/samantha-design-project/static/js/2.8d96f0e1.chunk.js"
   },
   {
-    "revision": "b6624a5be782d09b18fc",
-    "url": "/samantha-design-project/static/js/main.f224490f.chunk.js"
+    "revision": "a21e18fd1a4745892f7f",
+    "url": "/samantha-design-project/static/js/main.6acc80bb.chunk.js"
   },
   {
     "revision": "ee3a7a0d61595bd710fe",
