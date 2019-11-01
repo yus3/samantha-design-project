@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c00f3e7925d90bc0bb3577b62288e5aa",
+    "revision": "0417bd2e39b15a4409b29bffd9015e12",
     "url": "/samantha-design-project/index.html"
   },
   {
-    "revision": "a21e18fd1a4745892f7f",
+    "revision": "30a274eae681bef52ee2",
     "url": "/samantha-design-project/static/css/main.aa0c08a5.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/samantha-design-project/static/js/2.8d96f0e1.chunk.js"
   },
   {
-    "revision": "a21e18fd1a4745892f7f",
-    "url": "/samantha-design-project/static/js/main.6acc80bb.chunk.js"
+    "revision": "30a274eae681bef52ee2",
+    "url": "/samantha-design-project/static/js/main.0d4d198f.chunk.js"
   },
   {
     "revision": "ee3a7a0d61595bd710fe",

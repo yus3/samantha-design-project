@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/samantha-design-project/precache-manifest.84a9a9996c5f6bb37d1700ad6d145222.js"
+  "/samantha-design-project/precache-manifest.d68ecf7a6db3b35819748a351a2b705d.js"
 );
 
 self.addEventListener('message', (event) => {
