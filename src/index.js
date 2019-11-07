@@ -5,10 +5,12 @@ import './index.css';
 import Konva from 'konva';
 import { Stage, Layer, Rect, Arc } from 'react-konva';
 
-const CANVAS_SIZE = 300;
+const CANVAS_WIDTH = window.innerWidth;
+const CANVAS_HEIGHT = window.innerHeight;
 const RECT_WIDTH = 20;
 const RECT_HEIGHT = 100;
 const CIRCLE_RADIUS = 50;
+const RETRY_LIMIT = 500;
 
 class BoundingRectangle {
     constructor(x, y, width, height) {
@@ -19,21 +21,23 @@ class BoundingRectangle {
         this.height = height;
     }
 
-    // getID() { return this.id; };
-    getX() { return this.x; };
-    getY() { return this.y; };
-    getWidth() { return this.width; };
-    getHeight() { return this.height; };
+    toString = () => { return 'x: ' + this.x + ', y: ' + this.y + ', width: ' + this.width + ', height: ' + this.height };
 
-    haveIntersection(br) {
+    isOffCanvas() {
+        return (this.x < 0 || this.y < 0 ||
+            this.y + this.height > CANVAS_HEIGHT ||
+            this.x + this.width > CANVAS_WIDTH);
+    }
+
+    hasIntersection(br){
         // if (br.getID() === this.i) { return false; };
-        if (br.getX() === this.x && br.getY() === this.y && br.getWidth() === this.width && br.getHeight() === this.height) {
+        if (br.x === this.x && br.y === this.y && br.width === this.width && br.height === this.height) {
             return false;
         }
-        return !(br.getX() > this.x + this.width ||
-        br.getX() + br.getWidth() < this.x ||
-        br.getY() > this.y + this.height ||
-        br.getY() + br.getHeight() < this.y)
+        return !(br.x > this.x + this.width ||
+        br.x + br.width < this.x ||
+        br.y > this.y + this.height ||
+        br.y + br.height < this.y)
     };
 }
 
@@ -49,6 +53,10 @@ class RandomShapeFiller extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentWillMount() {
+        document.title = 'Art or Not';
+    }
+
     rectCalculateBoundingRectangle = (x, y, rotation) => {
         const rad = rotation * Math.PI / 180;
         const sine = Math.sin(rad);
@@ -56,7 +64,6 @@ class RandomShapeFiller extends React.Component {
         if (rotation <= 90) {
             return new BoundingRectangle(x-sine*RECT_HEIGHT, y, sine*RECT_HEIGHT+cosine*RECT_WIDTH, cosine*RECT_HEIGHT+sine*RECT_WIDTH);
         }
-        console.log(x, y, sine*RECT_HEIGHT, cosine*RECT_HEIGHT, sine*RECT_WIDTH, cosine*RECT_WIDTH)
         return new BoundingRectangle(x-sine*RECT_HEIGHT+cosine*RECT_WIDTH, y+cosine*RECT_HEIGHT, sine*RECT_HEIGHT-cosine*RECT_WIDTH, -cosine*RECT_HEIGHT+sine*RECT_WIDTH);
     };
 
@@ -75,18 +82,51 @@ class RandomShapeFiller extends React.Component {
         return new BoundingRectangle(x-cosine*CIRCLE_RADIUS, y+sine*CIRCLE_RADIUS, CIRCLE_RADIUS+cosine*CIRCLE_RADIUS, CIRCLE_RADIUS-sine*CIRCLE_RADIUS);
     };
 
+    checkCollision = (current) => {
+        for (let i = 0; i < this.state.boundingRectangles.length; i++) {
+            if (current.hasIntersection(this.state.boundingRectangles[i])) {
+                return true;
+            }
+        }
+        return false;
+    };
+
     handleClick = () => {
         this.setState(state => {
-            let newShapes;
-            let newBoundingRectangles;
+            let shapeAdded = false;
+            let newShapes = state.shapes;
+            let newBoundingRectangles = state.boundingRectangles;
+            let newShape, boundingRect;
             if (state.shapes.length % 8 === 0) {
-                const newRect = [Math.random()*(CANVAS_SIZE-RECT_WIDTH), Math.random()*(CANVAS_SIZE-RECT_HEIGHT), Math.random()*180, this.getRandomColor()];
-                newShapes = state.shapes.concat(newRect);
-                newBoundingRectangles = state.boundingRectangles.concat(this.rectCalculateBoundingRectangle(newRect[0], newRect[1], newRect[2]));
+                for (let i = 0; i < RETRY_LIMIT; i++) {
+                    newShape = [Math.random()*(CANVAS_WIDTH-RECT_WIDTH), Math.random()*(CANVAS_HEIGHT-RECT_HEIGHT), Math.random()*180, this.getRandomColor()];
+                    boundingRect = this.rectCalculateBoundingRectangle(newShape[0], newShape[1], newShape[2]);
+                    if (boundingRect.isOffCanvas() || this.checkCollision(boundingRect)) {
+                        continue;
+                    } else {
+                        shapeAdded = true;
+                        break;
+                    }
+                }
             } else {
-                const newSemiCircle = [CIRCLE_RADIUS+Math.random()*(CANVAS_SIZE-CIRCLE_RADIUS), CIRCLE_RADIUS+Math.random()*(CANVAS_SIZE-CIRCLE_RADIUS*2), Math.random()*360, this.getRandomColor()];
-                newShapes = state.shapes.concat(newSemiCircle);
-                newBoundingRectangles = state.boundingRectangles.concat(this.semiCircleCalculateBoundingRectangle(newSemiCircle[0], newSemiCircle[1], newSemiCircle[2]));
+                for (let j = 0; j < RETRY_LIMIT; j++) {
+                    newShape = [CIRCLE_RADIUS+Math.random()*(CANVAS_WIDTH-CIRCLE_RADIUS), CIRCLE_RADIUS+Math.random()*(CANVAS_HEIGHT-CIRCLE_RADIUS*2), Math.random()*360, this.getRandomColor()];
+                    boundingRect = this.semiCircleCalculateBoundingRectangle(newShape[0], newShape[1], newShape[2]);
+                    if (boundingRect.isOffCanvas() || this.checkCollision(boundingRect)) {
+                        continue;
+                    } else {
+                        shapeAdded = true;
+                        break;
+                    }
+                }
+
+            }
+            if (shapeAdded) {
+                newShapes = state.shapes.concat(newShape);
+                newBoundingRectangles = state.boundingRectangles.concat(boundingRect);
+            } else {
+                window.alert("Canvas Full");
+                window.location.reload();
             }
             return {
                 shapes: newShapes,
@@ -128,7 +168,7 @@ class RandomShapeFiller extends React.Component {
 
     render() {
         const shapeComponents = [];
-        const boundingRectangles = [];
+        // const boundingRectangles = [];
 
         for (let i = 0; i < this.state.shapes.length; i+=4) {
             if (i % 8 === 0) {
@@ -138,26 +178,22 @@ class RandomShapeFiller extends React.Component {
             }
         }
 
-        for (let j = 0; j < this.state.boundingRectangles.length; j++) {
-            const br = this.state.boundingRectangles[j];
-            boundingRectangles.push(this.getBoundingRectangles(br.getX(), br.getY(), br.getWidth(), br.getHeight()));
-        }
+        // for (let j = 0; j < this.state.boundingRectangles.length; j++) {
+        //     const br = this.state.boundingRectangles[j];
+        //     boundingRectangles.push(this.getBoundingRectangles(br.x, br.y, br.width, br.height));
+        // }
 
         return (
             <div className="centered">
-                <Stage width={CANVAS_SIZE} height={CANVAS_SIZE} onClick={this.handleClick}>
+                <Stage width={CANVAS_WIDTH} height={CANVAS_HEIGHT} onClick={this.handleClick}>
                     <Layer>
-                        <Rect x={0} y={0} width={CANVAS_SIZE} height={CANVAS_SIZE} stroke={"black"}/>
+                        <Rect x={0} y={0} width={CANVAS_WIDTH} height={CANVAS_HEIGHT} stroke={"black"}/>
                         {shapeComponents}
-                        {boundingRectangles}
                     </Layer>
                 </Stage>
             </div>
         )
     }
 }
-
-
-
 
 ReactDOM.render(<RandomShapeFiller />, document.getElementById('root'));
