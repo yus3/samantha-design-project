@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.aa0c08a5.chunk.css",
-    "main.js": "/static/js/main.9d4bb590.chunk.js",
-    "main.js.map": "/static/js/main.9d4bb590.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.5b7a6521.js",
-    "runtime-main.js.map": "/static/js/runtime-main.5b7a6521.js.map",
-    "static/js/2.8d96f0e1.chunk.js": "/static/js/2.8d96f0e1.chunk.js",
-    "static/js/2.8d96f0e1.chunk.js.map": "/static/js/2.8d96f0e1.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.9c297879cf1c683f4008dc1d5271521b.js": "/precache-manifest.9c297879cf1c683f4008dc1d5271521b.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.aa0c08a5.chunk.css.map": "/static/css/main.aa0c08a5.chunk.css.map"
+    "main.css": "/samantha-design-project/static/css/main.aa0c08a5.chunk.css",
+    "main.js": "/samantha-design-project/static/js/main.9d4bb590.chunk.js",
+    "main.js.map": "/samantha-design-project/static/js/main.9d4bb590.chunk.js.map",
+    "runtime-main.js": "/samantha-design-project/static/js/runtime-main.ebe9e9fb.js",
+    "runtime-main.js.map": "/samantha-design-project/static/js/runtime-main.ebe9e9fb.js.map",
+    "static/js/2.8d96f0e1.chunk.js": "/samantha-design-project/static/js/2.8d96f0e1.chunk.js",
+    "static/js/2.8d96f0e1.chunk.js.map": "/samantha-design-project/static/js/2.8d96f0e1.chunk.js.map",
+    "index.html": "/samantha-design-project/index.html",
+    "precache-manifest.d2bc35cce10bb32ce1437cb85e99ab66.js": "/samantha-design-project/precache-manifest.d2bc35cce10bb32ce1437cb85e99ab66.js",
+    "service-worker.js": "/samantha-design-project/service-worker.js",
+    "static/css/main.aa0c08a5.chunk.css.map": "/samantha-design-project/static/css/main.aa0c08a5.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.5b7a6521.js",
+    "static/js/runtime-main.ebe9e9fb.js",
     "static/js/2.8d96f0e1.chunk.js",
     "static/css/main.aa0c08a5.chunk.css",
     "static/js/main.9d4bb590.chunk.js"
