@@ -188,13 +188,13 @@ class RandomShapeFiller extends React.Component {
         />);
     };
 
-    getBoundingRectangles(x, y, w, h) {
-        return (<Rect x={x} y={y} width={w} height={h} stroke={"green"}/>);
-    }
+    // getBoundingRectangles(x, y, w, h) {
+    //     return (<Rect x={x} y={y} width={w} height={h} stroke={"green"}/>);
+    // }
 
     render() {
         const shapeComponents = [];
-        const boundingRectangles = [];
+        // const boundingRectangles = [];
 
         for (let i = 0; i < this.state.shapes.length; i+=5) {
             switch(i % 15) {
