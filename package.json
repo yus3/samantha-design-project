@@ -6,7 +6,7 @@
   "dependencies": {
     "konva": "^4.0.16",
     "react": "^16.11.0",
-    "react-component-export-image": "^0.1.7",
+    "react-component-export-image": "^1.0.6",
     "react-dom": "^16.11.0",
     "react-konva": "^16.10.1-0",
     "react-native-svg": "^9.13.3",
